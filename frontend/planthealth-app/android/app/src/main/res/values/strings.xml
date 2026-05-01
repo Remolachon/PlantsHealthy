@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">PlantHealth AI</string>
+    <string name="title_activity_main">PlantHealth AI</string>
+    <string name="package_name">com.planthealth.app</string>
+    <string name="custom_url_scheme">com.planthealth.app</string>
+</resources>

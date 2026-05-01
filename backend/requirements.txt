@@ -1,0 +1,28 @@
+# ─────────────────────────────────────────────────
+# Plant Health Detection API — Dependencias
+# ─────────────────────────────────────────────────
+
+# API
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+python-multipart==0.0.9       # necesario para UploadFile en FastAPI
+
+# Machine Learning
+tensorflow==2.19.1            # compatible con Python 3.9–3.12, carga modelos .h5 sin problema
+numpy==1.26.4
+
+# Computer Vision
+opencv-python-headless==4.9.0.80   # headless: sin dependencia de GUI (ideal para servidor)
+
+# Validación / serialización
+pydantic==2.7.1
+
+# ─────────────────────────────────────────────────
+# Notas:
+#   - tensorflow-addons NO es necesario en inferencia
+#     (solo se usó en el script de entrenamiento duvan.py).
+#   - tensorflow==2.19.1 es compatible con Python 3.9, 3.10, 3.11 y 3.12.
+#   - Si el servidor corre en CPU y quieres reducir el peso,
+#     puedes reemplazar tensorflow por tensorflow-cpu==2.19.1.
+#   - Los modelos .h5 entrenados con TF 2.x cargan sin problema en 2.19.x.
+# ─────────────────────────────────────────────────
