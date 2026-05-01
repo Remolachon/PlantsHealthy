@@ -8,7 +8,7 @@ uvicorn[standard]==0.29.0
 python-multipart==0.0.9       # necesario para UploadFile en FastAPI
 
 # Machine Learning
-tensorflow==2.19.1            # compatible con Python 3.9–3.12, carga modelos .h5 sin problema
+tensorflow-cpu==2.19.1          # compatible con Python 3.9–3.12, carga modelos .h5 sin problema
 numpy==1.26.4
 
 # Computer Vision

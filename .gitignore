@@ -1,0 +1,6 @@
+# Ignorar entornos y librerías
+backend/plantshealth/Lib/
+venv/
+__pycache__/
+*.pyd
+*.dll
