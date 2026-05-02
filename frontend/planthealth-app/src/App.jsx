@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Home } from './pages/Home';
 import { Result } from './pages/Result';
+import { About } from './pages/About';
 import { usePredict } from './hooks/usePredict';
 import { Loader } from './components/Loader';
 import { Header } from './components/Header';
@@ -9,10 +10,17 @@ import { AlertCircle } from 'lucide-react';
 function App() {
   const { analyzeImage, status, result, error, reset } = usePredict();
   const [previewUrl, setPreviewUrl] = useState(null);
+  const [showAbout, setShowAbout] = useState(false);
 
   const handleAnalyze = async (file, url) => {
     setPreviewUrl(url);
     await analyzeImage(file);
+  };
+
+  const handleHomeClick = () => {
+    reset();
+    setPreviewUrl(null);
+    setShowAbout(false);
   };
 
   const handleBack = () => {
@@ -20,10 +28,14 @@ function App() {
     setPreviewUrl(null);
   };
 
+  if (showAbout) {
+    return <About onBack={() => setShowAbout(false)} onHomeClick={handleHomeClick} />;
+  }
+
   if (status === 'loading') {
     return (
       <div className="min-h-screen flex flex-col bg-background">
-        <Header />
+        <Header onHelpClick={() => setShowAbout(true)} onHomeClick={handleHomeClick} />
         <main className="flex-1 w-full flex items-center justify-center pt-[88px] pb-[100px]">
           <Loader message="Analyzing plant health..." />
         </main>
@@ -34,7 +46,7 @@ function App() {
   if (status === 'error') {
     return (
       <div className="min-h-screen flex flex-col bg-background">
-        <Header />
+        <Header onHelpClick={() => setShowAbout(true)} onHomeClick={handleHomeClick} />
         <main className="flex-1 w-full flex flex-col items-center justify-center p-6 gap-6 pt-[88px] pb-[100px]">
           <AlertCircle className="w-16 h-16 text-error" />
           <div className="text-center">
@@ -53,10 +65,10 @@ function App() {
   }
 
   if (status === 'success' && result) {
-    return <Result result={result} previewUrl={previewUrl} onBack={handleBack} />;
+    return <Result result={result} previewUrl={previewUrl} onBack={handleBack} onHelpClick={() => setShowAbout(true)} onHomeClick={handleHomeClick} />;
   }
 
-  return <Home onAnalyze={handleAnalyze} />;
+  return <Home onAnalyze={handleAnalyze} onHelpClick={() => setShowAbout(true)} onHomeClick={handleHomeClick} />;
 }
 
 export default App;
