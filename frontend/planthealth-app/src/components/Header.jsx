@@ -12,7 +12,7 @@ export const Header = ({ onHelpClick, onHomeClick }) => {
         >
           <Leaf className="text-white w-6 h-6 shrink-0" />
           <span className="font-semibold tracking-tight text-xl font-black text-white">
-            PlantsHealthy
+            cambio en caliente para mostrar el CI/CD
           </span>
         </button>
         <button onClick={onHelpClick} className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center overflow-hidden border border-white/30 backdrop-blur-sm hover:bg-white/30 transition-colors">
